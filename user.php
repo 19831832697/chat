@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>输入用户名</title>
+    <title>用户注册</title>
 </head>
 <body>
 <form action="" method="post">
@@ -15,6 +15,7 @@
 </body>
 </html>
 <script src="/jquery.js"></script>
+<script type="text/javascript" src="/jquery.cookie.js"></script>
 <script>
     //初始化
     var ws_server='ws://vm.chat_swoole.com:9502';
@@ -41,6 +42,10 @@
         if(arr.code==1){
             alert(arr.msg);
         }else if(arr.code==2){
+            var user_name=arr.user_name;
+            var user_id=arr.user_id;
+            $.cookie('user_name', user_name);
+            $.cookie('user_id', user_id);
             window.location.href="/chat.php";
         }
     }
